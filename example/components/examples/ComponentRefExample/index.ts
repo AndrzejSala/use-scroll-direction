@@ -1,0 +1,1 @@
+export { ComponentRefExample } from './ComponentRefExample';

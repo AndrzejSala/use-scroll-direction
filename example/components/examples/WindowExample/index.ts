@@ -1,0 +1,1 @@
+export { WindowExample } from './windowExample';
