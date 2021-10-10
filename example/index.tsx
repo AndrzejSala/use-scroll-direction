@@ -7,11 +7,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import {WindowExample} from "./components/examples/windowExample";
-import {ComponentRefExample} from "./components/examples/componentRefExample";
+import {WindowExample} from "./components/examples/WindowExample";
+import {ComponentRefExample} from "./components/examples/ComponentRefExample";
 
 const App = () => {
   const [scrollDirection, setScrollDirection] = React.useState();
+
+  console.log('###6', scrollDirection);
 
   const onChangeScrollDirection = (newScrollDirection) => setScrollDirection(newScrollDirection);
 

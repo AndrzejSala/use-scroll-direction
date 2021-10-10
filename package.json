@@ -17,7 +17,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "publish": "npm publish --access=public"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -48,6 +49,7 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^5.0.3",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.throttle": "^4.1.6",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
@@ -60,6 +62,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1"
   }
 }
