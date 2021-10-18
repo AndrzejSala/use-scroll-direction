@@ -1,5 +1,23 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "A simple, performant, and cross-browser hook for handling scroll in your next react app.",
+  "keywords": [
+    "react",
+    "hook",
+    "custom-hook",
+    "typescript",
+    "detect",
+    "scroll",
+    "scrolling",
+    "direction",
+    "position",
+    "window",
+    "ref",
+    "frontend"
+  ],
+  "bugs": {
+    "url": "https://github.com/AndrzejSala/use-scroll-direction/issues"
+  },
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -9,6 +27,10 @@
   ],
   "engines": {
     "node": ">=10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndrzejSala/use-scroll-direction"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -35,7 +57,7 @@
     "trailingComma": "es5"
   },
   "name": "use-scroll-direction",
-  "author": "Andrzej Sala",
+  "author": "Andrzej Sala <sky0.as@gmail.com>",
   "module": "dist/use-scroll-direction.esm.js",
   "size-limit": [
     {
