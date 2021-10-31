@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback, RefObject } from 'react';
 import throttle from 'lodash.throttle';
 import debounce from 'lodash.debounce';
 
-export type ScrollDirection = 'UP' | 'DOWN' | 'NONE';
+export type ScrollDirectionType = 'UP' | 'DOWN' | 'NONE';
 
 type OptionsType = Readonly<{
   wait?: number;
@@ -10,6 +10,15 @@ type OptionsType = Readonly<{
   ref?: RefObject<HTMLElement | null> | null;
 }>;
 
+export function getScrollDirectionBooleans(scrollDirection: ScrollDirectionType) {
+  return {
+    isScrolling: scrollDirection !== 'NONE',
+    isScrollingUp: scrollDirection === 'UP',
+    isScrollingDown: scrollDirection === 'DOWN',
+    scrollDirection,
+  }
+}
+ 
 export const useScrollDirection = (options?: OptionsType) => {
   const wait = options?.wait || 50;
   const timeToReset = options?.timeToReset || 250;
@@ -23,7 +32,7 @@ export const useScrollDirection = (options?: OptionsType) => {
   );
 
   const lastYPosition = useRef(0);
-  const [direction, setDirection] = useState<ScrollDirection>('NONE');
+  const [direction, setDirection] = useState<ScrollDirectionType>('NONE');
 
   function handleScroll() {
     let currentYPosition = window.pageYOffset;
@@ -66,5 +75,5 @@ export const useScrollDirection = (options?: OptionsType) => {
       scrollContext.removeEventListener('scroll', handleScrollThrottled);
   });
 
-  return direction;
+  return getScrollDirectionBooleans(direction);
 };
