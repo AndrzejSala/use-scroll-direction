@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/npm/l/use-scroll-direction.svg)](./LICENSE)
 [![NPM total downloads](https://img.shields.io/npm/dt/use-scroll-direction.svg)](https://npmcharts.com/compare/use-scroll-direction?minimal=true)
 
-A simple, performant and versatile hook for handling scroll in your react app.
+A simple, performant, and cross-browser hook for handling scroll in your next react app.
 
 ## Installation
 ```bash
@@ -47,8 +47,6 @@ export const ComponentRefExample = () => {
     )
 };
 ```
-
-For more specific examples, check the demo app in `./example`
 
 ## Available options
 

@@ -1,6 +1,7 @@
 {
   "version": "0.1.1",
   "description": "A simple, performant, and cross-browser hook for handling scroll in your next react app.",
+  "homepage": "http://YOUR_GITHUB_USERNAME.github.io/REPO_NAME",
   "keywords": [
     "react",
     "hook",
@@ -34,13 +35,16 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "storybook": "start-storybook -p 6006",
+    "build:package": "tsdx build",
+    "build:storybook": "build-storybook",
+    "publish:package": "npm run build:package && npm publish --access=public",
+    "publish:storybook": "npm run build:storybook && gh-pages -d storybook-static",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why",
-    "publish": "npm publish --access=public"
+    "analyze": "size-limit --why"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -70,11 +74,21 @@
     }
   ],
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "@size-limit/preset-small-lib": "^5.0.3",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-console": "^1.2.3",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.throttle": "^4.1.6",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
+    "babel-loader": "^8.2.3",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
