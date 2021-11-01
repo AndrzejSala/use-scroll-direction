@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import { Meta, Story } from '@storybook/react';
 import {useScrollDirection} from '../src';
 
 export default {
@@ -11,7 +10,7 @@ export const WindowObject = () => {
   const scrollDirection = useScrollDirection();
 
   useEffect(() => {
-    console.log('ScrollDirectionY', scrollDirection);
+    console.log(scrollDirection);
   }, [scrollDirection])
 
   return (
@@ -37,7 +36,7 @@ export const RefObject = () => {
   const scrollDirection = useScrollDirection({ref: containerRef});
 
   useEffect(() => {
-    console.log('ScrollDirectionY', scrollDirection);
+    console.log(scrollDirection);
   }, [scrollDirection])
 
   return (
