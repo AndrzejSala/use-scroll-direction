@@ -1,0 +1,15 @@
+{
+    "extends": ["airbnb-base", "airbnb-typescript/base", "plugin:prettier/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "plugins": ["prettier", "import"],
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "ignorePatterns": [    
+      "**/*.spec.ts",
+      "**/*.stories.tsx"
+    ]
+}

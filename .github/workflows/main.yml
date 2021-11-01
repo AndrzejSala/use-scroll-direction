@@ -2,13 +2,13 @@ name: CI
 on: [push]
 jobs:
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
+    name: Build, lint, and test
 
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: ['16.x']
+        os: [ubuntu-latest]
 
     steps:
       - name: Checkout repo
@@ -23,10 +23,13 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: npm run test
 
-      - name: Build
-        run: yarn build
+      - name: Build package
+        run: npm run build:package
+      
+      - name: Build storybook
+        run: npm run build:storybook

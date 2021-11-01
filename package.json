@@ -23,28 +23,25 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/AndrzejSala/use-scroll-direction"
   },
   "scripts": {
-    "start": "tsdx watch",
     "storybook": "start-storybook -p 6006",
-    "build:package": "tsdx build",
+    "build:package": "tsc",
     "build:storybook": "build-storybook",
     "publish:package": "npm run build:package && npm publish --access=public",
     "publish:storybook": "npm run build:storybook && gh-pages -d storybook-static",
-    "test": "jest",
+    "test": "jest --ci --coverage --maxWorkers=2",
     "test:watch": "jest --watchAll",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
     "size": "size-limit",
+    "lint": "eslint 'src/**/*'",
     "analyze": "size-limit --why"
   },
   "peerDependencies": {
@@ -52,7 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "npm run lint"
     }
   },
   "prettier": {
@@ -67,38 +64,35 @@
   "size-limit": [
     {
       "path": "dist/use-scroll-direction.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/use-scroll-direction.esm.js",
-      "limit": "10 KB"
+      "limit": "5 KB"
     }
   ],
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
-    "@size-limit/preset-small-lib": "^5.0.3",
+    "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-info": "^4.1.18",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/addons": "^6.3.12",
-    "@storybook/react": "^6.3.12",
+    "@storybook/react": "^6.0.28",
+    "@types/jest": "^27.0.2",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.throttle": "^4.1.6",
-    "@types/react": "^17.0.21",
+    "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.9",
-    "babel-jest": "^27.3.1",
-    "babel-loader": "^8.2.3",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-typescript": "^14.0.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "4.0.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.2",
     "jest": "^27.3.1",
+    "prettier": "2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "size-limit": "^5.0.3",
     "ts-jest": "^27.0.7",
-    "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
   },

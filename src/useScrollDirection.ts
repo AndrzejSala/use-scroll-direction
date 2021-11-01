@@ -10,19 +10,24 @@ type OptionsType = Readonly<{
   ref?: RefObject<HTMLElement | null> | null;
 }>;
 
-export function getScrollDirectionBooleans(scrollDirection: ScrollDirectionType) {
+export function getScrollDirectionBooleans(
+  scrollDirection: ScrollDirectionType
+) {
   return {
     isScrolling: scrollDirection !== 'NONE',
     isScrollingUp: scrollDirection === 'UP',
     isScrollingDown: scrollDirection === 'DOWN',
     scrollDirection,
-  }
+  };
 }
- 
+
 export const useScrollDirection = (options?: OptionsType) => {
   const wait = options?.wait || 50;
   const timeToReset = options?.timeToReset || 250;
   const ref = options?.ref || null;
+
+  const lastYPosition = useRef(0);
+  const [direction, setDirection] = useState<ScrollDirectionType>('NONE');
 
   const debouncedResetDirection = useCallback(
     debounce(() => {
@@ -30,9 +35,6 @@ export const useScrollDirection = (options?: OptionsType) => {
     }, timeToReset),
     []
   );
-
-  const lastYPosition = useRef(0);
-  const [direction, setDirection] = useState<ScrollDirectionType>('NONE');
 
   function handleScroll() {
     let currentYPosition = window.pageYOffset;
@@ -61,7 +63,7 @@ export const useScrollDirection = (options?: OptionsType) => {
       debouncedResetDirection();
     }
 
-    return;
+    return undefined;
   }
 
   const handleScrollThrottled = throttle(handleScroll, wait, {
