@@ -34,16 +34,14 @@
     "url": "https://github.com/AndrzejSala/use-scroll-direction"
   },
   "scripts": {
-    "start": "tsdx watch",
     "storybook": "start-storybook -p 6006",
     "build:package": "tsdx build",
     "build:storybook": "build-storybook",
     "publish:package": "npm run build:package && npm publish --access=public",
     "publish:storybook": "npm run build:storybook && gh-pages -d storybook-static",
-    "test": "jest",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
     "test:watch": "jest --watchAll",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -67,11 +65,7 @@
   "size-limit": [
     {
       "path": "dist/use-scroll-direction.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/use-scroll-direction.esm.js",
-      "limit": "10 KB"
+      "limit": "5 KB"
     }
   ],
   "devDependencies": {
