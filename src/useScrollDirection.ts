@@ -10,15 +10,17 @@ type OptionsType = Readonly<{
   ref?: RefObject<HTMLElement | null> | null;
 }>;
 
-export function getScrollDirectionBooleans(scrollDirection: ScrollDirectionType) {
+export function getScrollDirectionBooleans(
+  scrollDirection: ScrollDirectionType
+) {
   return {
     isScrolling: scrollDirection !== 'NONE',
     isScrollingUp: scrollDirection === 'UP',
     isScrollingDown: scrollDirection === 'DOWN',
     scrollDirection,
-  }
+  };
 }
- 
+
 export const useScrollDirection = (options?: OptionsType) => {
   const wait = options?.wait || 50;
   const timeToReset = options?.timeToReset || 250;
