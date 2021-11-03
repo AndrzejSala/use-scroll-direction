@@ -35,11 +35,11 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build:package": "dts build",
+    "build": "dts build",
     "build:storybook": "build-storybook",
     "publish:package": "npm run build:package && npm publish --access=public",
     "publish:storybook": "npm run build:storybook && gh-pages -d storybook-static",
-    "test:ci": "jest --ci --coverage --maxWorkers=2",
+    "test": "jest --ci --coverage --maxWorkers=2",
     "test:watch": "jest --watchAll",
     "lint": "dts lint",
     "size": "size-limit",
