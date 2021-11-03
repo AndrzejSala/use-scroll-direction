@@ -10,6 +10,7 @@
     },
     "ignorePatterns": [    
       "**/*.spec.ts",
-      "**/*.stories.tsx"
+      "**/*.stories.tsx",
+      "rollup.config.js"
     ]
 }

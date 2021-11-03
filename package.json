@@ -20,7 +20,8 @@
     "url": "https://github.com/AndrzejSala/use-scroll-direction/issues"
   },
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
+  "module": "dist/index.min.mjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -34,7 +35,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build:package": "tsc",
+    "build:package": "rollup -c",
     "build:storybook": "build-storybook",
     "publish:package": "npm run build:package && npm publish --access=public",
     "publish:storybook": "npm run build:storybook && gh-pages -d storybook-static",
@@ -60,7 +61,6 @@
   },
   "name": "use-scroll-direction",
   "author": "Andrzej Sala <sky0.as@gmail.com>",
-  "module": "dist/use-scroll-direction.esm.js",
   "size-limit": [
     {
       "path": "dist/use-scroll-direction.cjs.production.min.js",
@@ -81,9 +81,12 @@
     "@types/lodash.throttle": "^4.1.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "4.0.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.2",
@@ -91,10 +94,15 @@
     "prettier": "2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rollup": "^2.59.0",
+    "rollup-plugin-dts": "^4.0.0",
+    "rollup-plugin-esbuild": "^4.6.0",
+    "rollup-plugin-terser": "^7.0.2",
     "size-limit": "^5.0.3",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "uglifyjs": "^2.4.11"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",

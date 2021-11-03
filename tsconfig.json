@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "incremental": true,            /* Enable incremental compilation */
+    "incremental": false,            /* Enable incremental compilation */
     "target": "es6",                /* Specify ECMAScript target version: */
     "module": "commonjs",           /* 'none', 'commonjs', 'amd', 'system', etc */
     "declaration": true,            /* Concatenate & emit output to single file.*/
@@ -14,6 +14,7 @@
   ],
   "exclude": [
     "**/*.spec.ts",
-    "**/*.stories.tsx"
+    "**/*.stories.tsx",
+    "rollup.config.js"
   ]
 }
