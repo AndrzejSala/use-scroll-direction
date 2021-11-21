@@ -1,4 +1,7 @@
-# use-scroll-direction [![Foo](https://user-images.githubusercontent.com/16742965/138960767-ef7af8a6-da86-4db3-848f-ad8d1aec3beb.png)](https://www.npmjs.com/package/use-scroll-direction)
+<p align="center">
+  <a href="https://www.npmjs.com/package/use-scroll-direction"><img src="https://user-images.githubusercontent.com/16742965/138960767-ef7af8a6-da86-4db3-848f-ad8d1aec3beb.png" align="center" width="80" /></a>
+</p>
+<h1 align="center">use-scroll-direction</h1>
 
 [![Latest Stable Version](https://img.shields.io/npm/v/use-scroll-direction.svg)](https://www.npmjs.com/package/use-scroll-direction)
 [![CI Status](https://github.com/AndrzejSala/use-scroll-direction/workflows/CI/badge.svg)](https://github.com/AndrzejSala/use-scroll-direction/actions)

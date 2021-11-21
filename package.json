@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple, performant, and cross-browser hook for handling scroll in your next react app.",
   "homepage": "https://andrzejsala.github.io/use-scroll-direction",
   "keywords": [
@@ -37,7 +37,8 @@
     "storybook": "start-storybook -p 6006",
     "build": "dts build",
     "build:storybook": "build-storybook",
-    "publish:package": "npm run build:package && npm publish --access=public",
+    "publish": "npm run publish:package && npm run publish:storybook",
+    "publish:package": "npm run build && npm publish --access=public",
     "publish:storybook": "npm run build:storybook && gh-pages -d storybook-static",
     "test": "jest --ci --coverage --maxWorkers=2",
     "test:watch": "jest --watchAll",
@@ -93,7 +94,6 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1"
   }
 }
