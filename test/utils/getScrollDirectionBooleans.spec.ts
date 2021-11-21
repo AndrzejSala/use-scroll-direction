@@ -1,4 +1,4 @@
-import { getScrollDirectionBooleans } from '../src/useScrollDirection';
+import { getScrollDirectionBooleans } from '../../src/utils/getScrollDirectionBooleans';
 
 describe('useScrollDirection', () => {
   describe('getScrollDirectionBooleans', () => {

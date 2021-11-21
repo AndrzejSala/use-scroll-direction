@@ -7,9 +7,3 @@ export type OptionsType = Readonly<{
   timeToReset?: number;
   ref?: RefObject<HTMLElement | null> | null;
 }>;
-
-export type FinalOptionsType = Readonly<{
-  wait: number;
-  timeToReset: number;
-  ref: RefObject<HTMLElement | null> | null;
-}>;

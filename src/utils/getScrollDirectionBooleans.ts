@@ -1,4 +1,4 @@
-import type { ScrollDirectionType } from './types';
+import type { ScrollDirectionType } from '../types';
 
 export const getScrollDirectionBooleans = (
   scrollDirection: ScrollDirectionType

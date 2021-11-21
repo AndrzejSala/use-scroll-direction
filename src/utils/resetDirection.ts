@@ -1,4 +1,4 @@
-import { TIMEOUT_ID } from './consts';
+import { TIMEOUT_ID } from '../consts';
 
 export const initializeResetDirectionTimeout = () => {
   window[TIMEOUT_ID] = null;
