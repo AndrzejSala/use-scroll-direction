@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "A simple, performant, and cross-browser hook for handling scroll in your next react app.",
   "homepage": "https://andrzejsala.github.io/use-scroll-direction",
   "keywords": [
@@ -14,7 +14,10 @@
     "position",
     "window",
     "ref",
-    "frontend"
+    "frontend",
+    "custom scroll",
+    "performant scroll",
+    "scroll detection"
   ],
   "bugs": {
     "url": "https://github.com/AndrzejSala/use-scroll-direction/issues"
