@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-// import { useScrollDirection } from '../src';
 import { useScrollDirection } from '../src/useScrollDirection';
 
 export default {
-  title: 'Basic usage',
+  title: 'Basic usage Y axis',
   component: useScrollDirection,
 };
 

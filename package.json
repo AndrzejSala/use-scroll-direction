@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple, performant, and cross-browser hook for handling scroll in your next react app.",
   "homepage": "https://andrzejsala.github.io/use-scroll-direction",
   "keywords": [
@@ -76,11 +76,11 @@
     "@size-limit/preset-small-lib": "^5.0.3",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/addons": "^6.3.12",
-    "@storybook/react": "^6.3.12",
+    "@storybook/react": "^6.4.9",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.throttle": "^4.1.6",
     "@types/react": "^17.0.21",
