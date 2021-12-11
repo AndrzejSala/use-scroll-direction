@@ -6,5 +6,7 @@ export const getScrollDirectionBooleans = (
   isScrolling: scrollDirection !== 'NONE',
   isScrollingUp: scrollDirection === 'UP',
   isScrollingDown: scrollDirection === 'DOWN',
+  isScrollingLeft: scrollDirection === 'LEFT',
+  isScrollingRight: scrollDirection === 'RIGHT',
   scrollDirection,
 });
