@@ -1,10 +1,10 @@
 import { TIMEOUT_ID } from '../consts';
 
-export const initializeResetDirectionTimeout = () => {
+export const initializeResetDirection = () => {
   window[TIMEOUT_ID] = null;
 };
 
-export const handleResetDirectionTimeout = (
+export const handleResetDirection = (
   timeToReset: number,
   onReset: () => void
 ) => {

@@ -1,9 +1,9 @@
-import { getScrollDirectionBooleans } from '../../src/utils/getScrollDirectionBooleans';
+import { getDirectionBooleans } from '../../src/utils/getDirectionBooleans';
 
 describe('useScrollDirection', () => {
   describe('getScrollDirectionBooleans', () => {
     it('returns correct object for NONE', () => {
-      const result = getScrollDirectionBooleans('NONE');
+      const result = getDirectionBooleans('NONE');
       const expected = {
         isScrolling: false,
         isScrollingUp: false,
@@ -17,7 +17,7 @@ describe('useScrollDirection', () => {
     });
 
     it('returns correct object for UP', () => {
-      const result = getScrollDirectionBooleans('UP');
+      const result = getDirectionBooleans('UP');
       const expected = {
         isScrolling: true,
         isScrollingUp: true,
@@ -31,7 +31,7 @@ describe('useScrollDirection', () => {
     });
 
     it('returns correct object for DOWN', () => {
-      const result = getScrollDirectionBooleans('DOWN');
+      const result = getDirectionBooleans('DOWN');
       const expected = {
         isScrolling: true,
         isScrollingUp: false,
@@ -45,7 +45,7 @@ describe('useScrollDirection', () => {
     });
 
     it('returns correct object for LEFT', () => {
-      const result = getScrollDirectionBooleans('LEFT');
+      const result = getDirectionBooleans('LEFT');
       const expected = {
         isScrolling: true,
         isScrollingUp: false,
@@ -59,7 +59,7 @@ describe('useScrollDirection', () => {
     });
 
     it('returns correct object for RIGHT', () => {
-      const result = getScrollDirectionBooleans('RIGHT');
+      const result = getDirectionBooleans('RIGHT');
       const expected = {
         isScrolling: true,
         isScrollingUp: false,

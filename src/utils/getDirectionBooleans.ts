@@ -1,8 +1,6 @@
 import type { ScrollDirectionType } from '../types';
 
-export const getScrollDirectionBooleans = (
-  scrollDirection: ScrollDirectionType
-) => ({
+export const getDirectionBooleans = (scrollDirection: ScrollDirectionType) => ({
   isScrolling: scrollDirection !== 'NONE',
   isScrollingUp: scrollDirection === 'UP',
   isScrollingDown: scrollDirection === 'DOWN',

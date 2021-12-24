@@ -1,154 +1,111 @@
 import { useState, useEffect, useRef } from 'react';
 import throttle from 'lodash.throttle';
-import { getScrollDirectionBooleans } from './utils/getScrollDirectionBooleans';
 import {
-  initializeResetDirectionTimeout,
-  handleResetDirectionTimeout,
-} from './utils/resetDirection';
+  initializeResetDirection,
+  handleResetDirection,
+  getDirectionBooleans,
+  computeDirection,
+} from './utils';
 import { OptionsType, ScrollDirectionType } from './types';
 
 export const useScrollDirection = (options?: OptionsType) => {
   const wait = options?.wait || 50;
   const timeToReset = options?.timeToReset || 150;
   const ref = options?.ref || null;
-  const throttleOptions = {
-    trailing: false,
-  };
-
-  const lastYPosition = useRef<number | null>(null);
-  const lastXPosition = useRef<number | null>(null);
+  const lastY = useRef<number | null>(null);
+  const lastX = useRef<number | null>(null);
   const [direction, setDirection] = useState<ScrollDirectionType>('NONE');
 
-  const handleResetDirection = () => {
-    lastYPosition.current = null;
-    lastXPosition.current = null;
+  const handleReset = () => {
+    lastY.current = null;
+    lastX.current = null;
 
     setDirection('NONE');
   };
 
-  const handleWindowScrollThrottled = throttle(
-    () => {
-      handleResetDirectionTimeout(timeToReset, handleResetDirection);
+  const handleWindowScroll = () => {
+    const currentY = Math.round(window.pageYOffset);
+    const currentX = Math.round(window.pageXOffset);
 
-      const currentYPosition = Math.round(window.pageYOffset);
-      const currentXPosition = Math.round(window.pageXOffset);
-
-      // Skip first iteration
-      if (lastYPosition.current === null || lastXPosition.current === null) {
-        lastYPosition.current = currentYPosition;
-        lastXPosition.current = currentXPosition;
-
-        return;
-      }
-
-      const xNotChangedPosition = currentXPosition === lastXPosition.current;
-      const yNotChangedPosition = currentYPosition === lastYPosition.current;
-      const xyNotChangedPosition =
-        currentYPosition === lastYPosition.current &&
-        currentXPosition === lastXPosition.current;
-
-      // Set NONE for the same position
-      if (xyNotChangedPosition) {
-        setDirection('NONE');
-
-        return;
-      }
-
-      let newDirection: ScrollDirectionType = 'NONE';
-
-      // Check the new direction
-      if (xNotChangedPosition) {
-        newDirection = lastYPosition.current < currentYPosition ? 'DOWN' : 'UP';
-      } else if (yNotChangedPosition) {
-        newDirection =
-          lastXPosition.current < currentXPosition ? 'RIGHT' : 'LEFT';
-      }
-
-      // If direction has changed, return it
-      if (newDirection !== direction) {
-        setDirection(newDirection);
-      }
-
-      // Reassign lastPosition
-      lastYPosition.current = currentYPosition;
-      lastXPosition.current = currentXPosition;
+    // Skip first iteration
+    if (lastY.current === null || lastX.current === null) {
+      lastY.current = currentY;
+      lastX.current = currentX;
 
       return;
-    },
-    wait,
-    throttleOptions
-  );
+    }
 
-  const handleRefScroll = throttle(
-    () => {
-      handleResetDirectionTimeout(timeToReset, handleResetDirection);
+    const newDirection = computeDirection({
+      isRef: false,
+      currentY,
+      currentX,
+      lastY: lastY.current,
+      lastX: lastX.current,
+    });
+    setDirection(newDirection);
 
-      const childRect = ref?.current?.children?.[0].getBoundingClientRect();
+    // Reassign lastPosition
+    lastY.current = currentY;
+    lastX.current = currentX;
 
-      if (childRect) {
-        const currentYPosition = Math.round(childRect.y);
-        const currentXPosition = Math.round(childRect.x);
+    return;
+  };
 
-        // Skip first iteration
-        if (lastYPosition.current === null || lastXPosition.current === null) {
-          lastYPosition.current = currentYPosition;
-          lastXPosition.current = currentXPosition;
+  const handleRefScroll = () => {
+    const childRect = ref?.current?.children?.[0].getBoundingClientRect();
 
-          return;
-        }
+    if (childRect) {
+      const currentY = Math.round(childRect.y);
+      const currentX = Math.round(childRect.x);
 
-        const xNotChangedPosition = currentXPosition === lastXPosition.current;
-        const yNotChangedPosition = currentYPosition === lastYPosition.current;
-        const xyNotChangedPosition =
-          currentYPosition === lastYPosition.current &&
-          currentXPosition === lastXPosition.current;
-
-        // Set NONE for the same position
-        if (xyNotChangedPosition) {
-          setDirection('NONE');
-
-          return;
-        }
-
-        let newDirection: ScrollDirectionType = 'NONE';
-
-        if (xNotChangedPosition) {
-          newDirection =
-            lastYPosition.current > currentYPosition ? 'DOWN' : 'UP';
-        } else if (yNotChangedPosition) {
-          newDirection =
-            lastXPosition.current > currentXPosition ? 'RIGHT' : 'LEFT';
-        }
-
-        // If direction has changed, return it
-        if (newDirection !== direction) {
-          setDirection(newDirection);
-        }
-
-        // Reassign lastYPosition
-        lastYPosition.current = currentYPosition;
-        lastXPosition.current = currentXPosition;
+      // Skip first iteration
+      if (lastY.current === null || lastX.current === null) {
+        lastY.current = currentY;
+        lastX.current = currentX;
 
         return;
       }
+
+      const newDirection = computeDirection({
+        isRef: true,
+        currentY,
+        currentX,
+        lastY: lastY.current,
+        lastX: lastX.current,
+      });
+      setDirection(newDirection);
+
+      // Reassign lastY
+      lastY.current = currentY;
+      lastX.current = currentX;
+
+      return;
+    }
+  };
+
+  const handleScroll = throttle(
+    () => {
+      handleResetDirection(timeToReset, handleReset);
+
+      if (ref) {
+        return handleRefScroll();
+      }
+
+      return handleWindowScroll();
     },
     wait,
-    throttleOptions
+    {
+      trailing: false,
+    }
   );
 
   useEffect(() => {
-    initializeResetDirectionTimeout();
-    const element = ref?.current;
+    initializeResetDirection();
+    const scrollContext = ref?.current || window;
 
-    if (element) {
-      element.addEventListener('scroll', handleRefScroll);
-      return () => element.removeEventListener('scroll', handleRefScroll);
-    } else {
-      window.addEventListener('scroll', handleWindowScrollThrottled);
-      return () =>
-        window.removeEventListener('scroll', handleWindowScrollThrottled);
-    }
+    scrollContext.addEventListener('scroll', handleScroll);
+    return () => scrollContext.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return getScrollDirectionBooleans(direction);
+  return getDirectionBooleans(direction);
 };
