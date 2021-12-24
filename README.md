@@ -27,7 +27,9 @@ export const WindowExample = () => {
         scrollDirection,
         isScrolling,
         isScrollingUp,
-        isScrollingDown
+        isScrollingDown,
+        isScrollingLeft,
+        isScrollingRight
     } = useScrollDirection();
 
     useEffect(() => {
