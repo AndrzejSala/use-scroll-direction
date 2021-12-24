@@ -5,6 +5,7 @@
 
 [![Latest Stable Version](https://img.shields.io/npm/v/use-scroll-direction.svg)](https://www.npmjs.com/package/use-scroll-direction)
 [![CI Status](https://github.com/AndrzejSala/use-scroll-direction/workflows/CI/badge.svg)](https://github.com/AndrzejSala/use-scroll-direction/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/AndrzejSala/use-scroll-direction.svg)](https://www.npmjs.com/package/use-scroll-direction)
 [![Gzipped size](https://img.shields.io/bundlephobia/minzip/use-scroll-direction?label=size)](https://www.npmjs.com/package/use-scroll-direction)
 [![License](https://img.shields.io/npm/l/use-scroll-direction.svg)](./LICENSE)
 
