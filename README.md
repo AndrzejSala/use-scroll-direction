@@ -9,6 +9,8 @@
 [![License](https://img.shields.io/npm/l/use-scroll-direction.svg)](./LICENSE)
 
 A simple, performant, and cross-browser hook for handling scroll in your next react app.
+Use it to detect scroll direction in X or Y axis. On the browser window as well as on the custom component with usage of ref.
+If you need more quick or lazy response, play with `wait` option.
 
 ## Installation
 ```bash
@@ -16,7 +18,7 @@ npm i use-scroll-direction
 ```
 
 ## Usage
-The hook returns the object with the actual scroll direction which could be one of three states: **'NONE'**, **'DOWN'**, **'UP'**, and useful booleans.
+The hook returns the object with the actual scroll direction which could be one of three states: **'NONE'**, **'DOWN'**, **'UP'**, **'LEFT'**, **'RIGHT'** and useful booleans.
 
 ### Use on window object
 ```tsx
@@ -68,5 +70,5 @@ export const ComponentRefExample = () => {
 | Name | Type | Description |
 | - | - | - |
 | `wait` | `?number` | Time in ms for throttling of scroll handler (default: 50)
-| `timeToReset` | `?number` | Time in ms after last scroll event to reset the state (default: 250)
+| `timeToReset` | `?number` | Time in ms after last scroll event to reset the state (default: 150)
 | `ref` | `?string` | When passed, the listener will be attached to element instead of window object 
