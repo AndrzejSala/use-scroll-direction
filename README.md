@@ -88,4 +88,4 @@ export const ComponentRefExample = () => {
 | - | - | - |
 | `wait` | `?number` | Time in ms for throttling of scroll handler (default: 50)
 | `timeToReset` | `?number` | Time in ms after last scroll event to reset the state (default: 150)
-| `ref` | `?string` | When passed, the listener will be attached to element instead of window object 
+| `ref` | `?HTMLElement` | When passed, the listener will be attached to element instead of window object 
