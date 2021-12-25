@@ -103,7 +103,7 @@ export const useScrollDirection = (options?: OptionsType) => {
     initializeResetDirection();
     const scrollContext = ref?.current || window;
 
-    scrollContext.addEventListener('scroll', handleScroll);
+    scrollContext.addEventListener('scroll', handleScroll, { passive: true });
     return () => scrollContext.removeEventListener('scroll', handleScroll);
   }, []);
 
