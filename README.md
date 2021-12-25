@@ -9,9 +9,25 @@
 [![Gzipped size](https://img.shields.io/bundlephobia/minzip/use-scroll-direction?label=size)](https://www.npmjs.com/package/use-scroll-direction)
 [![License](https://img.shields.io/npm/l/use-scroll-direction.svg)](./LICENSE)
 
-A simple, performant, and cross-browser hook for handling scroll in your next react app.
-Use it to detect scroll direction in X or Y axis. On the browser window as well as on the custom component with usage of ref.
-If you need more quick or lazy response, play with `wait` option.
+> A simple, performant, and cross-browser hook for detecting scroll direction in your next react app.
+
+## Key Features
+- **Performant** 🔥 </br>
+Do what is only needed. In a good way. </br>
+Use passive listener and throttling to make it invesible for your device.
+
+- **Versatile** 💪🏼 </br>
+Handle both X & Y axis, on browser window or custom element (ref).
+Need more quick/lazy response? Play with `wait` option.
+
+- **Microlight** 🪶 </br>
+It's lighter than the air, only ~1.6kB.
+
+- **Cross-everything** 🖥️ </br>
+The same behavior on all kind of browsers and devices. No excuces (even on Iphone Safari).
+
+- **Great support** 👨🏻 </br>
+Stuck with implementation or has interesting use case and need something more? Create an issue and share your voice.  
 
 ## Installation
 ```bash
