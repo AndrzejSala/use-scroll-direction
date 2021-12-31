@@ -9,9 +9,7 @@ import {
 import { OptionsType, ScrollDirectionType } from './types';
 
 export const useScrollDirection = (options?: OptionsType) => {
-  const wait = options?.wait || 50;
-  const timeToReset = options?.timeToReset || 150;
-  const ref = options?.ref || null;
+  const { ref = null, timeToReset = 150, wait = 50 } = options || {};
   const lastY = useRef<number | null>(null);
   const lastX = useRef<number | null>(null);
   const [direction, setDirection] = useState<ScrollDirectionType>('NONE');
