@@ -7,7 +7,7 @@ export default {
 };
 
 export const WindowObject = () => {
-  const scrollDirection = useScrollDirection();
+  const { scrollDirection } = useScrollDirection();
 
   useEffect(() => {
     console.log(scrollDirection);
@@ -77,7 +77,7 @@ WindowObject.story = {
 
 export const RefObject = () => {
   const containerRef = useRef(null);
-  const scrollDirection = useScrollDirection({ ref: containerRef });
+  const { scrollDirection } = useScrollDirection({ ref: containerRef });
 
   useEffect(() => {
     console.log(scrollDirection);
